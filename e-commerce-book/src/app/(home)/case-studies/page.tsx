@@ -49,7 +49,7 @@ const caseStudies = [
 export default function CaseStudies() {
   return (
     <>
-      <PageHeader title="Case Studies" link="/case-studies" />
+      <PageHeader title="Case Studies"  />
       <section className="w-full flex_center flex-col lg:py-20 font-jakarta py-10 lg:px-0 px-4 lg:gap-12 container gap-6">
         <SectionHeader
           smallTitle="Case Studies"

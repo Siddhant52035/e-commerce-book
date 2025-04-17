@@ -6,7 +6,7 @@ import PageHeader from "@/components/PageHeader";
 export default function WhyChooseUs() {
   return (
     <>
-      <PageHeader title="Why Choose Us" link="/why-choose-us" />
+      <PageHeader title="Why Choose Us" />
       <section className="w-full flex_center flex-col lg:gap-12  gap-6 lg:px-24 px-4 lg:py-16 py-10 bg-[#F5FBFF]">
        
         <div className="container">

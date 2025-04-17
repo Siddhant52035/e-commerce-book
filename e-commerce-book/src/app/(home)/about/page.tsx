@@ -1,7 +1,11 @@
 import About from "@/sections/About";
+import Hero from "@/sections/Hero";
 
 export default function AboutPage() {
   return (
-    <About/>
+    <>
+      <Hero title="About Us" />
+      <About />
+    </>
   );
 }

@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export default function MissionVision() {
   return (
     <>
-      <PageHeader title="Mission & Vision" link="/mission-vision" />
+      <PageHeader title="Mission & Vision"  />
       <div className="image flex_center h-[80vh] w-full relative">
         <Image
           src={aboutSecondImage}

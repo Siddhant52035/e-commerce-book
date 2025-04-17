@@ -201,7 +201,7 @@ export const newBlogs = [
 export default function Blogs() {
   return (
     <main className="w-full overflow-hidden">
-      <PageHeader link="/blogs" title="Blogs & Industry Insights" />
+      <PageHeader title="Blogs & Industry Insights" />
       <section className="flex_center flex-col lg:px-24 px-4 lg:py-16 py-10 gap-12">
         <SectionHeader
           smallTitle="Blogs & Industry Insights"

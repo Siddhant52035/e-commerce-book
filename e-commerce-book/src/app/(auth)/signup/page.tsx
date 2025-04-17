@@ -32,7 +32,7 @@ const Register = () => {
     setIsSubmitting(true);
     try {
       const res = await apiRequest({
-        url: "/auth/register",
+        url: "/auth/signup",
         data: data,
         method: "POST",
       });

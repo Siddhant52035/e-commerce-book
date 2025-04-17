@@ -4,7 +4,7 @@ import Contact from "@/sections/Contact";
 export default function ContactUs() {
   return (
     <main className="w-full overflow-hidden">
-      <PageHeader title="Contact Us" link="/contact" />
+      <PageHeader title="Contact Us"  />
 
       <Contact className="pt-0 py-16" />
       <div className="w-full flex_center h-max">

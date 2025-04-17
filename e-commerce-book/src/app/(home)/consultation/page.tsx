@@ -5,7 +5,7 @@ export default function Consultation() {
     return (
         <main className="w-full overflow-hidden">
             <PageHeader
-                link="/consultation"
+            
                 title="Contact Us"
             />
             <Contact

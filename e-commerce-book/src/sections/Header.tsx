@@ -4,11 +4,24 @@ import { Heart, MessageSquare, User, Search } from "lucide-react";
 import logo from "@/assets/logo/Sikshya.png";
 import Link from "next/link";
 import Image from "next/image";
-
-import { useState } from "react";
+import useUserStore from "@/store/useUserStore";
+import { Upload } from 'lucide-react';
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const user = useUserStore((state) => state.user);
+
+    // Update isLoggedIn based on user state change
+    useEffect(() => {
+      if (user == null) {
+        setIsLoggedIn(false);
+      } else {
+        setIsLoggedIn(true);
+      }
+    }); // This will run whenever the user state changes
+  
 
   return (
     <header className="header z-50  top-0 sticky flex flex-col w-full border-b">
@@ -36,15 +49,15 @@ export default function Header() {
 
           {/* Navigation Icons */}
           <div className="flex items-center gap-6 text-sm font-medium text-black uppercase">
-            <div className="flex items-center gap-1 cursor-pointer">
+            <Link href="/books" className="flex items-center gap-1 cursor-pointer">
               <Heart size={16} />
               <span>Wishlist</span>
-            </div>
+            </Link>
             <div className="h-7 w-[1.5px] bg-gray-300" />
-            <div className="flex items-center gap-1 cursor-pointer">
+            <Link href="/message" className="flex items-center gap-1 cursor-pointer">
               <MessageSquare size={16} />
               <span>Message</span>
-            </div>
+            </Link>
             <div className="h-7 w-[1.5px] bg-gray-300" />
             {isLoggedIn ? (
               <div className="flex items-center gap-1 cursor-pointer">
@@ -87,7 +100,7 @@ export default function Header() {
           </div>
 
           <div className="flex gap-10 font-normal text-lg">
-            <Link href="/">Books</Link>
+            <Link href="/books">Books</Link>
             <div className="h-7 w-[1.5px] bg-gray-300"></div>
           </div>
 
@@ -100,8 +113,9 @@ export default function Header() {
             <div className="h-7 w-[1.5px] bg-gray-300"></div>
           </div>
 
-          <div className="flex gap-10 font-normal text-lg">
-            <Link href="/contact">Contact us</Link>
+          <div className=" bg-gray-200 hover:bg-white font-normal text-lg rounded-lg">
+            <Link href="/upload" className="flex gap-2 p-1 px-4"><span className="text-tertiary font-bold">Upload </span><Upload color="black"/></Link>
+            
           </div>
         </div>
       </div>

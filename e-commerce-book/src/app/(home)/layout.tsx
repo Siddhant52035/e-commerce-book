@@ -7,6 +7,7 @@ import { twMerge } from "tailwind-merge";
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer";
 import Link from "next/link";
+import ToastProvider from "@/components/ToastProvider";
 
 const jakarta =Nunito({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={twMerge(jakarta.variable, "antialiased font-sans")}>
         <Header />
         {children}
+        <ToastProvider />
         <Footer />
         <div className="bg-[#03213C]">
           <div className="flex lg:flex-row flex-col container items-center justify-between  w-full py-3 lg:px-0 px-4 ">
@@ -49,7 +51,7 @@ export default function RootLayout({
                 Terms of Service
               </Link>
               <div className="size-2 rounded-full bg-primary"></div>
-              <Link href={"/"} className="hover:underline text-xs md:text-sm">
+              <Link href={"/privacy-policy"} className="hover:underline text-xs md:text-sm">
                 Privacy Policy
               </Link>
             </div>

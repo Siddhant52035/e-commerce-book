@@ -37,7 +37,7 @@ const config: Config = {
         tertiary: '#2d2d2d',
         quaternary: '#FFBF1C',
 
-        quinary: '#ff3c31',
+        quinary: '#9f0038',
         borderColor:'#E9E9E9',
         bodyColor:'#F5FBFF',
         dimmer:"#d5d5d5",

@@ -7,7 +7,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
 
-export default function Hero() {
+export default function Hero({ title }: { title: string }) {
   const sliderImages = [heroBg];
   const sliderText = [
     "From preschool to pre-tertiary, our students enjoy fun, interactive and relevant lessons and are empowered to think beyond the confines of the classroom.", // text for first image
@@ -108,7 +108,8 @@ export default function Hero() {
 
         {/* Dynamic text */}
         <div className="absolute w-2/3 flex flex-col justify-center gap-8 text-primary bottom-1/3 -trasnlate-y-1/2 left-1/2 transform -translate-x-1/2 ">
-          <h1 className="flex_center text-center text-3xl ">
+          <h1 className="flex_center flex-col text-center text-3xl ">
+            <h4 className="font-bold pe-4 pb-6">{title}</h4>
             <span className="font-bold pe-4">{sliderText[currentSlide]}</span>
           </h1>
         </div>

@@ -46,7 +46,7 @@ export default function Services() {
     return (
         <main className="w-full overflow-hidden">
             <PageHeader
-                link="/services"
+                
                 title="Services"
             />
             <section className="w-full flex_center flex-col px-24 py-16 gap-12">

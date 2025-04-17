@@ -6,28 +6,64 @@ import PrimaryButton from "@/components/UI/PrimaryButton";
 import Loading from "@/components/UI/Loading";
 import Link from "next/link";
 import login from "@/assets/images/Login.png";
+import { apiRequest } from "@/utils";
+import useUserStore from "@/store/useUserStore";
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 export default function Login() {
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const loginUser = useUserStore((state) => state.login); // get the login function from zustand
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: "onChange" });
+  } = useForm<FormData>({ mode: "onChange" });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const res = await apiRequest({
+        url: "/auth/login",
+        data,
+        method: "POST",
+      });
+
+      if (res?.status === "failed") {
+        setErrMsg(res?.message || "Login failed");
+      } else {
+        setErrMsg("");
+        const userData = res?.user;
+        loginUser(userData); // update the zustand store with user info
+        window.location.replace("/"); // redirect to home
+      }
+    } catch (error) {
+      console.error(error);
+      setErrMsg("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="flex h-screen w-full">
       {/* LEFT SIDE */}
       <div className="w-full lg:w-[55%] flex items-center justify-center bg-[#0c2d48] px-6">
         <div className="w-full max-w-md bg-[#cbd0dc] p-8 rounded-sm shadow-md">
-          <h2 className="text-3xl font-extrabold text-center text-black">LOGIN</h2>
+          <h2 className="text-3xl font-extrabold text-center text-black">
+            LOGIN
+          </h2>
           <p className="text-center text-lg font-medium text-gray-700 mt-1">
             Welcome Back
           </p>
 
-          <form className="mt-6 flex flex-col gap-5">
+          <form className="mt-6 flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
             <TextInput
               name="email"
               placeholder="Username"
@@ -53,9 +89,7 @@ export default function Login() {
             />
 
             {/* Error Message */}
-            {errMsg && (
-              <p className="text-sm text-red-500">{errMsg}</p>
-            )}
+            {errMsg && <p className="text-sm text-red-500">{errMsg}</p>}
 
             {/* Submit Button */}
             {isSubmitting ? (
@@ -69,7 +103,6 @@ export default function Login() {
           </form>
 
           <div className="flex justify-center items-center mt-4">
-            
             <p className="text-sm text-gray-700">
               New here?{" "}
               <Link href="/signup" className="text-blue-600 font-semibold">

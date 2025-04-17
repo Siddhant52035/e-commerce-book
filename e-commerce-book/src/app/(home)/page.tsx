@@ -21,7 +21,7 @@ export default function Home() {
         />
       </Head>
       <main className="overflow-hidden">
-        <Hero />
+        <Hero title="" />
         <Services />
         <About />
         <Testimonials />

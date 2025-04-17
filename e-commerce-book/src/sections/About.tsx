@@ -1,196 +1,144 @@
-import contactImage from "@/assets/images/contact1.jpg";
+import contactImage from "@/assets/images/about1.png";
+import contactImage2 from "@/assets/images/about2.png";
+import contactImage3 from "@/assets/images/about3.png";
+import contactImage4 from "@/assets/images/about-final.png";
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import { Link as LinkIcon } from "lucide-react";
-import { Mail } from "lucide-react";
-import { FaLocationDot } from "react-icons/fa6";
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
-import { TbWorld } from "react-icons/tb";
-import Link from "next/link";
-import visa1 from "@/assets/images/about1.jpg";
-import visa3 from "@/assets/images/about2.jpg";
-import visa2 from "@/assets/images/about3.jpg";
-import visa4 from "@/assets/images/about4.jpg";
-import visa5 from "@/assets/images/about5.jpg";
 
-export const stats = [
-  { value: "20+ Countries", label: "Client Reach" },
-  { value: "20+ Years", label: "Team Experience" },
-  { value: "20+ Experts", label: "In-House & Partner Consultants" },
-  { value: "98%", label: "Client Repeat Rate" },
-];
 
-export const cards = [
-  {
-    title: "Empowering Change Across Sectors",
-    text: "Tailored Solutions for Business, Community & Career Growth Kandelco delivers innovative consulting services that drive business success, strengthen communities, and support individual career journeys across Australia.",
-    image: visa1,
-  },
-  {
-    title: "Purpose-Driven from the Start",
-    text: "A Story Built on Shared Vision and Real-World Impact Founded by experienced professionals, Kandelco was born from the belief that sustainable progress happens when businesses, communities, and individuals grow together.",
-    image: visa3,
-  },
-  {
-    title: "Mission & Vision That Guide Everything We Do",
-    text: "Empowering Action, Creating Measurable Outcomes With a clear mission and bold vision, we focus on delivering consulting solutions that create lasting, meaningful change.",
-    image: visa2,
-  },
-  {
-    title: "A Trusted and Evolving Partner",
-    text: "From Local Projects to National Impact Our journey from grassroots initiatives to major collaborations with corporations and governments reflects our growth and ongoing commitment to making a difference.",
-    image: visa4,
-  },
-  {
-    title: " The People Behind the Impact",
-    text: "Expert Consultants, Coaches & Changemakers Our multidisciplinary team brings deep expertise and a passion for empowerment, ensuring every client receives a holistic, results-driven approach.",
-    image: visa5,
-  },
-];
 export default function About() {
   return (
     <>
-      <section className=" font-jakarta  gap-8 w-full xl:px-24 lg:px-10 py-10 px-5 bg-[#F5FBFF]">
-        <h1 className="md:text-[2.9rem] mb-10 text-xl w-full text-center  font-normal">
-          Empowering Growth Through Strategic Consulting
-        </h1>
+      <section className=" font-jakarta  gap-8 w-full xl:px-24 lg:px-10 py-10 px-5 bg-[#F3f1ff]">
         <div className="flex_center lg:flex-row flex-col gap-10 container w-full rounded-md">
           <div className="lg:w-[45%] w-[90%] flex_center flex-col  overflow-hidden">
             <Image
               src={contactImage}
               alt="contact-image"
-              className="w-full max-h-[800px] object-cover"
+              className="w-full max-h-[800px] p-10 object-cover"
             />
           </div>
           <div className="lg:w-[55%] w-[90%] flex_center flex-col gap-6">
             <div className="flex flex-col items-start gap-4">
-              <div className="flex flex-col text-justify text-tertiary gap-3">
+              <div className="flex flex-col font-bold text-justify text-gray-600 gap-3">
+                <h1 className=" text-base w-full text-left font-bold">
+                  Description
+                </h1>
+                <h1 className=" mb-10 text-gray-500 text-2xl w-full text-left font-bold">
+                  ABOUT US
+                </h1>
                 <h4>
-                  Kandelco Consulting was founded by a team of experienced
-                  professionals with diverse backgrounds in business, community
-                  development, and career coaching. The company’s vision emerged
-                  from a shared understanding that success in today’s world is
-                  not only about individual achievements but also about
-                  collective progress. We realised that businesses need robust
-                  strategies to grow, communities require sustainable programs
-                  to thrive, and individuals need support to navigate their
-                  careers. This sparked the idea of a consulting firm that would
-                  offer innovative and practical solutions across these three
-                  vital areas—business, community, and career development.
+                  Welcome to SIKSHYA, a platform built by students, for
+                  students! We’re here to make studying simpler, smarter, and
+                  more collaborative. Our mission is to empower every learner by
+                  creating a space where knowledge is shared freely and
+                  effortlessly. Whether you’re a student looking to upload your
+                  notes, access study materials, or grab some offline books as a
+                  reward for your contributions, we’ve got you covered.
                 </h4>
                 <h4>
-                  Kandelco began with a simple yet powerful mission: to empower
-                  businesses, uplift communities, and guide individuals on their
-                  professional journeys. Over the years, we’ve grown into a
-                  trusted partner for organisations and individuals across
-                  Australia, helping them tackle challenges, explore new
-                  opportunities, and achieve their goals.
-                </h4>
-              </div>
-              <h1 className="md:text-3xl text-xl text-justify font-normal">
-                Kandelco Consulting empowers businesses, communities, and
-                individuals with tailored strategies for sustainable growth.
-                Founded by experienced professionals, it has become a trusted
-                national leader in delivering impactful solutions.
-              </h1>
-              <h1 className="md:text-3xl text-xl  font-normal">
-                The Evolution
-              </h1>
-              <div className="flex flex-col text-justify text-tertiary gap-3">
-                <h4>
-                  Starting with small businesses and local communities, our
-                  impact soon spread to larger corporations and government
-                  agencies. We’ve managed to successfully combine our deep
-                  knowledge of business operations with a passion for social
-                  responsibility and personal empowerment. This unique
-                  combination has enabled us to offer consulting services that
-                  not only drive profitability but also foster positive social
-                  change.
+                  At SIKSHYA, we believe that education thrives when we help
+                  each other. That’s why we’ve created a community-driven system
+                  where you can upload your notes, old question papers, and
+                  study materials to support your peers in need. In return,
+                  you’ll get access to a treasure trove of resources—read books
+                  and papers online, or even score offline books as a token of
+                  appreciation for your generosity. From textbooks to
+                  handwritten notes, we’re building a hub where every student
+                  can find what they need and give back in their own way.
                 </h4>
                 <h4>
-                  Through continuous growth, we’ve expanded our team to include
-                  top consultants, project managers, policy advisors, career
-                  coaches, and other experts. Each member of our team brings
-                  valuable experience and expertise in their field, ensuring we
-                  can offer holistic solutions to our clients. Today, Kandelco
-                  is a dynamic consulting firm that focuses on results, building
-                  long-term relationships, and delivering actionable strategies
-                  that make a real difference.
+                  Our journey started with a simple idea: no student should
+                  struggle to find quality study resources. Today, we’re proud
+                  to offer a seamless experience that combines online access
+                  with real-world rewards. Join us in revolutionizing how
+                  students learn, share, and grow—because together, we can make
+                  education unstoppable.
                 </h4>
               </div>
             </div>
           </div>
-        </div>
-        <div className="container md:mt-20 mt-10  grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat, index) => (
-            <div key={index}>
-              <h2 className="text-2xl md:text-4xl font-bold text-[#00BFFF]">
-                {stat.value}
-              </h2>
-              <p className="mt-2 text-sm md:text-base text-gray-700 uppercase tracking-wide">
-                {stat.label}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
-      <section className="bg-tertiary text-white py-16 px-4 md:px-12">
-        <div className="container">
-          {/* Section Heading */}
-          <div className="mb-12 ">
-            <p className="uppercase text-sm text-[#96c4e3] mb-2">
-              / How we work
-            </p>
-            <h2 className="text-xl md:text-3xl text-center font-normal">
-              At Kandelco Consulting, we collaborate closely with clients to
-              understand their unique needs and create tailored, impactful
-              strategies. Our approach is built on transparency, innovation, and
-              long-term success, ensuring practical and sustainable solutions
-              that drive meaningful results.
-            </h2>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {cards.slice(0, 2).map((card, idx) => (
-              <div
-                key={idx}
-                className="bg-white text-black rounded-md shadow-md overflow-hidden"
-              >
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-80 object-cover "
-                />
-                <div className="px-6 pb-6">
-                  <h3 className="font-normal text-xl md:text-3xl mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-base text-gray-700">{card.text}</p>
-                </div>
+      <div className="border-b-2 border-gray-500 my-14 container"></div>
+      <section className=" font-jakarta  gap-8 w-full xl:px-24 lg:px-10 py-10 px-5 bg-[#cbd0dc]">
+        <div className="flex_center lg:flex-row flex-col gap-10 container w-full rounded-md">
+          <div className="lg:w-[55%] w-[90%] flex_center flex-col gap-6">
+            <div className="flex flex-col items-start gap-4">
+              <div className="flex flex-col font-bold text-justify text-gray-600 gap-3">
+                <h1 className="mb-4 text-gray-500 text-2xl w-full text-left font-bold">
+                  WHAT WE DO
+                </h1>
+                <h4>
+                  At SIKSHYA, we’re all about making studying easier and more
+                  rewarding for students like you. Our platform is designed to
+                  bring the power of sharing and learning into one simple,
+                  student-friendly space. Here’s how it works: Upload your
+                  notes, old question papers, or any study material you’ve
+                  got—it could be a game-changer for a peer in need. In return,
+                  dive into a growing library of resources shared by other
+                  students, from handwritten notes to textbooks, all available
+                  to read online whenever you want.
+                </h4>
+                <h4>
+                  {" "}
+                  Need something more tangible? Earn offline books as a
+                  heartfelt thank-you for your contributions. Whether you’re
+                  sharing knowledge or grabbing resources for your next exam,
+                  we’ve built a system that keeps the student community
+                  thriving.
+                </h4>
               </div>
-            ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cards.slice(2, 5).map((card, idx) => (
-              <div
-                key={idx}
-                className="bg-white text-black rounded-md shadow-md overflow-hidden"
-              >
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="px-6 pb-6">
-                  <h3 className="font-normal text-lg md:text-2xl mb-2">
-                    {card.title}
-                  </h3>
-                  <p className="text-base text-gray-700">{card.text}</p>
-                </div>
+          <div className="lg:w-[45%] w-[90%] flex_center flex-col  overflow-hidden">
+            <Image
+              src={contactImage2}
+              alt="contact-image"
+              className="w-full max-h-[800px] p-10 object-cover"
+            />
+          </div>
+        </div>
+      </section>
+      <div className="border-b-2 border-gray-500 my-14 container"></div>
+      <section className=" font-jakarta  gap-8 w-full xl:px-24 lg:px-10 py-10 px-5 bg-[#e1cdcd]">
+        <div className="flex_center lg:flex-row flex-col gap-10 container w-full rounded-md">
+          <div className="lg:w-[45%] w-[90%] flex_center flex-col  overflow-hidden">
+            <Image
+              src={contactImage3}
+              alt="contact-image"
+              className="w-full max-h-[800px] p-10 object-cover"
+            />
+          </div>
+          <div className="lg:w-[55%] w-[90%] flex_center flex-col gap-6">
+            <div className="flex flex-col items-start gap-4">
+              <div className="flex flex-col font-bold text-justify text-gray-600 gap-3">
+                <h1 className=" mb-4 text-gray-500 text-2xl w-full text-left font-bold">
+                  WHY WE STARTED
+                </h1>
+                <h4>
+                  At Sikshya, we know the student struggle all too well—missing
+                  notes right before an exam, scrambling for updated resources,
+                  or realizing the textbook you need is nowhere to be found. As
+                  students ourselves, we’ve lived those frustrations firsthand.
+                  That’s what sparked the idea for Sikshya: a platform to turn
+                  those challenges into a solution. We wanted to create a space
+                  where every student could find what they need and share what
+                  they have, making education less stressful and more connected.
+                  Sikshya isn’t just a website—it’s our way of saying, “We’ve
+                  got your back.”
+                </h4>
               </div>
-            ))}
+            </div>
           </div>
+        </div>
+      </section>
+      <section className=" py-28 max-w-full  !w-full">
+        <div className=" w-full ">
+          <Image
+            src={contactImage4}
+            alt="contact-image"
+            className="w-full max-h-[400px] object-cover"
+          />
         </div>
       </section>
     </>

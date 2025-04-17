@@ -29,7 +29,7 @@ export default async function BlogDetails({ params, searchParams }: Props) {
 
   return (
     <main className="w-full">
-      <PageHeader link={`/blogs/${slug}`} title={revertSlug(slug)} />
+      <PageHeader  title={revertSlug(slug)} />
       <section className="py-10 bg-[#F5F5F5] w-full">
         <div className="flex_center flex-col gap-8 container">
           <h3 className="text-3xl font-semibold text-center text-secondary">

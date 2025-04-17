@@ -120,7 +120,7 @@ export default function Footer() {
             <div className="flex flex-col gap-6 w-[48%]">
               <p className="text-xs md:text-base font-normal">Important Links</p>
               <nav className="flex flex-col text-xs md:text-sm gap-2 text-dimmer md:gap-4">
-                <Link href="/business-consulting" className="hover:underline">
+                <Link href="/privacy-policy" className="hover:underline">
                   Privacy Policy
                 </Link>
                 <Link href="/community-consulting" className="hover:underline">

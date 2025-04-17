@@ -10,7 +10,6 @@ import { RxCross2 } from "react-icons/rx";
 import { FaFacebookF, FaLinkedinIn, FaPinterest, FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import { RiInstagramFill } from "react-icons/ri";
-import CTA from "@/components/CTA";
 
 const socialMedia = [
   {
@@ -36,7 +35,7 @@ export default function OurTeam() {
 
   return (
     <main className="w-full overflow-hidden">
-      <PageHeader link="/our-team" title="Meet The Team" />
+      <PageHeader title="Meet The Team" />
       {/* <section className="w-full flex_center flex-col lg:px-24 px-4 lg:py-16 py-10 gap-12"> */}
       {/* <SectionHeader
           // smallTitle="Our Team"
