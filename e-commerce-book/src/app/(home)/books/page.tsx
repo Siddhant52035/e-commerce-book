@@ -75,7 +75,7 @@ export default function Product() {
 
   useEffect(() => {
     fetchBooks();
-    console.log("These are the book", books);
+    
   }, []);
 
   return (
@@ -88,7 +88,7 @@ export default function Product() {
           <aside className="w-full md:w-1/4">
             <div className="mb-2 bg-white p-4 rounded-sm shadow-lg">
               <div className="flex items-center gap-4">
-                <LayoutGrid color="#9f0038" size={35} />
+                <LayoutGrid color="#173f5f" size={35} />
                 <span className="font-semibold text-xl md:text-2xl">
                   Categories
                 </span>

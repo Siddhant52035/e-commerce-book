@@ -1,6 +1,4 @@
-import PrimaryButton from "@/components/UI/PrimaryButton";
-import SectionHeader from "../components/SectionHeader";
-import contactImage from "@/assets/images/contact1.jpg";
+import contactImage from "@/assets/images/signup.png";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { Link as LinkIcon } from "lucide-react";
@@ -32,32 +30,14 @@ export default function Contact({ className }: { className?: string }) {
               <span className="text-sm text-secondary me-1">/</span>Contact Us
             </h1>
             <h1 className="md:text-[46px] leading-[42px] text-3xl  font-normal">
-              Schedule a Free Counseling Consultation
+              Get In Touch With Us
             </h1>
             <p className="text-text">
               Fill out the form below, and we&apos;ll be in touch to arrange a
               consultation at a time most suitable for you.
             </p>
 
-            <div className="flex flex-col text-tertiary gap-3">
-              <h1 className=" text-lg  font-semibold">Kandelco Pty. Ltd.</h1>
-              <div className="flex items-center gap-2 text-sm">
-                <FaLocationDot /> <p>Melbourne, Australia</p>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <FaPhoneAlt /> <p>+61452446582‬</p>
-              </div>
-
-              <div className="flex items-center gap-2 text-sm">
-                <FaEnvelope /> <p>info@kandelco.com.au</p>
-              </div>
-              <Link
-                href="http://www.kandelco.com.au"
-                className="flex items-center gap-2 text-sm"
-              >
-                <TbWorld /> <span>www.kandelco.com.au</span>
-              </Link>
-            </div>
+           
             <div className="flex items-start gap-2 mb-4">
               <div className="bg-tertiary hover:bg-secondary transition-all duration-500 rounded-full p-2 flex_center">
                 <LinkIcon className="text-white" size={24} />
@@ -161,7 +141,7 @@ export default function Contact({ className }: { className?: string }) {
             </div> */}
             <div className="flex justify-start items-start">
               <button className="rounded-sm bg-secondary hover:bg-tertiary transition duration-300 py-2 md:px-6 px-4 text-sm md:text-base font-medium text-primary">
-                Make a Reservation
+              Submit
               </button>
             </div>
           </form>

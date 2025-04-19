@@ -25,7 +25,7 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-sm shadow-lg group">
+    <div className="bg-[#cbd0dc] p-4 rounded-sm shadow-lg group">
       <Link href={`/product/${formatSlug(name)}`}>
         <div className="cursor-pointer flex justify-center group-hover:scale-105 transition-transform">
           <Image

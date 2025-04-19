@@ -109,7 +109,7 @@ export default function Header() {
             <div className="h-7 w-[1.5px] bg-gray-300"></div>
           </div>
           <div className="flex gap-10 font-normal text-lg">
-            <Link href="/blogs">Blog</Link>
+            <Link href="/contact">Contact Us</Link>
             <div className="h-7 w-[1.5px] bg-gray-300"></div>
           </div>
 

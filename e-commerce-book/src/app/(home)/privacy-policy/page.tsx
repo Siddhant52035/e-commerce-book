@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
     <div className="bg-blue-50 min-h-screen p-6 sm:p-12 flex  text-gray-800">
         <div className="border-r-8 rounded-lg border-gray-500 my-14 ps-60 "></div>
       <div className="max-w-3xl  mx-auto space-y-8">
-        <h1 className="text-4xl font-extrabold border-b-4 border-blue-500 inline-block pb-1">
+        <h1 className="text-4xl font-extrabold border-b-4 border-secondary inline-block pb-1">
           PRIVACY POLICY
         </h1>
 
