@@ -1,9 +1,9 @@
-import User from "../models/user.js";
+import Users from "../models/userModel.js";
 export const login = async (req, res) => {
 
 
     const { email, password } = req.body;
-    const user = await User.findOne({ email }).select("+password");
+    const user = await Users.findOne({ email }).select("+password");
     if (!user) {
         return res.status(404).send("User not found");
     } else {
@@ -26,12 +26,12 @@ export const signup = async (req, res) => {
     try {
         const { firstName, lastName, email, password } = req.body;
 
-        const existingUser = await User.findOne({ email });
+        const existingUser = await Users.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ success: false, message: "Email already exists" });
         }
 
-        const newUser = new User({ firstName, lastName, email, password });
+        const newUser = new Users({ firstName, lastName, email, password });
         await newUser.save();
 
         res.status(201).json({ success: true, message: "User registered successfully" });

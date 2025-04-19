@@ -30,7 +30,7 @@ export default function FAQ() {
 
     <SectionHeader
         smallTitle="FAQs"
-        title="We answer your every queries"
+      
     />
     <div className="flex_center lg:w-[70%] w-full">
         <div className="flex flex-col w-full gap-6">

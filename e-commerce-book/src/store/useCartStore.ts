@@ -1,15 +1,11 @@
-// store/useCartStore.ts
-import { StaticImageData } from "next/image";
 import { create } from "zustand";
 
 type CartItem = {
   id: string;
   name: string;
-  price: number;
-  quantity: number;
-  image:string;
-    desc:string;
-  // add any other fields you need
+  pdf:string;
+  desc:string;
+  
 };
 
 type CartState = {
@@ -25,13 +21,11 @@ export const useCartStore = create<CartState>((set, get) => ({
   addToCart: (item) => {
     const existingItem = get().items.find((i) => i.id === item.id);
     if (existingItem) {
-      set({
-        items: get().items.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        ),
-      });
+      // You can handle this however you want — toast, alert, etc.
+      console.log("Item already exists in cart");
+      return;
     } else {
-      set({ items: [...get().items, { ...item, quantity: 1 }] });
+      set({ items: [...get().items, item] });
     }
   },
   removeFromCart: (id) =>

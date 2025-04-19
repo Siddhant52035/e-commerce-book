@@ -1,80 +1,90 @@
 "use client";
 import PageHeader from "@/components/PageHeader";
-import BookCard from "@/components/BookCard";
-import { ChevronDown, ChevronRight, LayoutGrid, List } from "lucide-react";
-import { useState } from "react";
-
+import { ChevronDown, ChevronRight, LayoutGrid } from "lucide-react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Grid } from "lucide-react";
-import SectionHeader from "@/components/SectionHeader";
+import axios from "axios";
+import BookCard from "@/components/BookCard";
 
+// Book interface
+interface BookData {
+  title: string;
+  author?: string;
+  description?: string;
+  pdf: string; // URL to PDF
+  [key: string]: any;
+}
+
+// Sample categories
 const categories = [
   {
-    label: "Necklaces",
-    path: "/destination",
+    label: "Notes",
+    path: "/notes",
     subMenu: [
-      { label: "Gold Necklace", path: "/product" },
-      { label: "Silver Necklace", path: "/product" },
+      { label: "Science Notes", path: "/notes/science" },
+      { label: "Math Notes", path: "/notes/math" },
+      { label: "History Notes", path: "/notes/history" },
     ],
   },
   {
-    label: "Bracelets",
-    path: "/faqs",
+    label: "Books",
+    path: "/books",
     subMenu: [
-      { label: "Gold", path: "/gold" },
-      { label: "Silver", path: "/silver" },
-      { label: "Diamond", path: "/diamond" },
-      { label: "Platinum", path: "/platinum" },
-      { label: "Gemstone", path: "/gemstone" },
+      { label: "Fiction", path: "/books/fiction" },
+      { label: "Non-fiction", path: "/books/non-fiction" },
+      { label: "Biographies", path: "/books/biographies" },
+      { label: "Academic", path: "/books/academic" },
+      { label: "Self-help", path: "/books/self-help" },
     ],
   },
   {
-    label: "Rings",
-    path: "/gallery",
+    label: "Others",
+    path: "/others",
     subMenu: [
-      { label: "Gold", path: "/gold" },
-      { label: "Silver", path: "/silver" },
-      { label: "Diamond", path: "/diamond" },
-      { label: "Platinum", path: "/platinum" },
-      { label: "Gemstone", path: "/gemstone" },
+      { label: "Magazines", path: "/others/magazines" },
+      { label: "Journals", path: "/others/journals" },
     ],
   },
   {
-    label: "Earrings",
-    path: "/scholarship-list",
-    subMenu: [
-      { label: "Gold", path: "/gold" },
-      { label: "Silver", path: "/silver" },
-      { label: "Diamond", path: "/diamond" },
-      { label: "Platinum", path: "/platinum" },
-      { label: "Gemstone", path: "/gemstone" },
-    ],
+    label: "Library Info",
+    path: "/library-info",
   },
-  { label: "Bangles", path: "/testimonials" },
-  { label: "Pendants", path: "/visa-acceptance" },
-  { label: "Chains", path: "/studentcounselling" },
-  { label: "Anklets", path: "/scholarship-assistance" },
-  { label: "Nose Pins", path: "/message-from-ceo" },
-  { label: "Cufflinks", path: "/holiday-list" },
-  { label: "Jewelry Sets", path: "/about" },
-  { label: "Gold Coin & Bullion", path: "/blogs" },
 ];
 
 export default function Product() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [books, setBooks] = useState<BookData[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const toggleSubMenu = (category: string) => {
     setOpenCategory(openCategory === category ? null : category);
   };
+
+  const fetchBooks = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8800/note/fetch-notes"
+      );
+      setBooks(response.data);
+    } catch (error) {
+      console.error("Failed to fetch books", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBooks();
+    console.log("These are the book", books);
+  }, []);
 
   return (
     <main className="w-full">
       <PageHeader title="Books" />
 
       <section className="pt-10 bg-[#F5F5F5] px-4 sm:px-6 md:px-10 lg:px-16">
-        {/* Content Section (Sidebar + Products) */}
         <div className="container flex flex-col md:flex-row gap-4">
-          {/* Sidebar (Categories) */}
+          {/* Sidebar */}
           <aside className="w-full md:w-1/4">
             <div className="mb-2 bg-white p-4 rounded-sm shadow-lg">
               <div className="flex items-center gap-4">
@@ -119,21 +129,22 @@ export default function Product() {
             </div>
           </aside>
 
-          {/* Product Display */}
+          {/* Book Display */}
           <div className="w-full md:w-3/4 mb-10 h-full">
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {/* {products.map(({ image, product, price, desc, id }) => ( */}
-              {/* <BookCard
-                  key={id}
-                  image={image.src}
-                  product={product}
-                  price={price}
-                  desc={desc}
-                  id={id}
-                  
-                /> */}
-              {/* ))} */}
-            </div>
+            {loading ? (
+              <p className="text-center">Loading books...</p>
+            ) : (
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                {books.map((book) => (
+                  <BookCard
+                    name={book.name}
+                    pdf={book.pdf}
+                    desc={book.desc}
+                    id={book.id}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>

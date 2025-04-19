@@ -34,7 +34,7 @@ export default function Blogs() {
     <section className="w-full flex_center flex-col font-jakarta py-10 lg:px-0 px-4 lg:gap-12 container gap-6">
       <SectionHeader
         smallTitle="Blogs & Articles"
-        title="Stay up to date on our blogs"
+       
       />
       <div className="w-full grid lg:grid-cols-3 overflow-hidden grid-cols-1  gap-8">
         {blogs.map((blog, index) => {

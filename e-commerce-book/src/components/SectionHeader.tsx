@@ -5,18 +5,20 @@ export default function SectionHeader({
   smallTitle,
   className,
 }: {
-  title: string;
+  title?: string;
   smallTitle?: string;
   className?: string;
 }) {
   return (
-    <div className={twMerge("section-header flex_center flex-col", className)}>
-      <p className="text-base font-bold lg:text-start text-center">
+    <div
+      className={twMerge(
+        "section-header flex_center flex-col w-full bg-secondary text-white",
+        className
+      )}
+    >
+      <p className="text-xl font-bold lg:text-start text-center py-3">
         {smallTitle}
       </p>
-      <h1 className="md:text-[1.9rem] text-2xl text-tertiary  font-semibold text-center ">
-        {title}
-      </h1>
     </div>
   );
 }

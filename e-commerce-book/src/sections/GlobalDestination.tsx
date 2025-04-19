@@ -8,7 +8,7 @@ export default function GlobalDestination() {
     <section className="w-full flex_center flex-col gap-12 lg:p-24 px-4 py-10 font-jakarta">
       <SectionHeader
         smallTitle="Global Destinations"
-        title="One-Stop for all the Best Universities across the globe"
+        
         className="lg:w-[60%] w-full text-center"
       />
       <div className="map lg:hidden block w-full">

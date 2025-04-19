@@ -204,8 +204,8 @@ export default function Blogs() {
       <PageHeader title="Blogs & Industry Insights" />
       <section className="flex_center flex-col lg:px-24 px-4 lg:py-16 py-10 gap-12">
         <SectionHeader
-          smallTitle="Blogs & Industry Insights"
-          title="Stay up to date on our blogs"
+          smallTitle="Notes"
+          
         />
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 overflow-hidden w-full gap-8 gap-y-16">
           {newBlogs.map((blog, index) => {

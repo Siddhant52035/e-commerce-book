@@ -3,48 +3,64 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { apiRequest } from "@/utils/index";
-import Link from "next/link";
 import TextInput from "@/components/UI/TextInput";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import Loading from "@/components/UI/Loading";
-import signup from "@/assets/images/signup.png";
+import { handleFileUpload } from "@/utils/index"; // make sure this is the updated one for PDF
 
 interface BookData {
   name: string;
-  image: string;
-  price: string;
+  pdf: string; // will store the uploaded PDF URL
   desc: string;
 }
-const Register = () => {
+
+const BookForm = () => {
   const [errMsg, setErrMsg] = useState<{
     message: string;
     status: string;
   } | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
+
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
+    setValue,
   } = useForm<BookData>({ mode: "onChange" });
 
   const onSubmit = async (data: BookData) => {
     setIsSubmitting(true);
     try {
+      if (!pdfFile) {
+        setErrMsg({ message: "Please upload a PDF file.", status: "failed" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const uploadedUrl = await handleFileUpload(pdfFile);
+
+      if (!uploadedUrl) {
+        setErrMsg({ message: "PDF upload failed.", status: "failed" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const payload = {
+        ...data,
+        pdf: uploadedUrl, // now contains the PDF URL
+      };
+
       const res = await apiRequest({
-        url: "/auth/signup",
-        data: data,
+        url: "/note/upload-pdf",
+        data: payload,
         method: "POST",
       });
 
-      if (res?.status === "failed") {
-        setErrMsg(res);
-      } else {
-        setErrMsg(res);
-        setTimeout(() => {
-          window.location.replace("/login");
-        }, 5000);
-      }
+      setErrMsg(res);
+
+      
+
       setIsSubmitting(false);
     } catch (error) {
       console.log(error);
@@ -53,76 +69,83 @@ const Register = () => {
   };
 
   return (
-    <div className="flex h-screen w-full ">
-      {/* LEFT - FORM */}
+    <div className="flex h-screen w-full">
       <div className="w-full lg:w-[55%] flex items-center justify-center px-6">
         <div className="w-full max-w-lg bg-[#cbd0dc] p-8 rounded-sm shadow-md">
           <h2 className="text-3xl font-extrabold text-center text-black">
-        Upload Book
+            Upload Book
           </h2>
-         
+
           <form
             className="flex flex-col gap-5"
             onSubmit={handleSubmit(onSubmit)}
           >
-            {/* First & Last Name */}
-            <div className="flex flex-col lg:flex-row gap-2">
-              <TextInput
-                name="name"
-                label="Name"
-                placeholder="First Name"
-                type="text"
-                styles="w-full"
-                register={register("name", {
-                  required: "Name is required!",
-                })}
-                error={errors.name ? errors.name?.message : ""}
-              />
-              <TextInput
-                name="image"
-                label="Image"
-                placeholder="image"
-                type="text"
-                styles="w-full"
-                register={register("image", {
-                  required: "image is required!",
-                })}
-                error={errors.image ? errors.image?.message : ""}
+            {/* Name */}
+            <TextInput
+              name="name"
+              label="Name"
+              placeholder="Book Name"
+              type="text"
+              styles="w-full"
+              register={register("name", {
+                required: "Name is required!",
+              })}
+              error={errors.name ? errors.name?.message : ""}
+            />
+
+            {/* PDF File Upload */}
+            <div className="flex flex-col">
+              <label className="text-sm font-medium text-gray-700 mb-1">
+                Upload PDF
+              </label>
+              <input
+                type="file"
+                accept="application/pdf"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file && file.type === "application/pdf") {
+                    setPdfFile(file);
+                  } else {
+                    setErrMsg({
+                      message: "Only PDF files are allowed.",
+                      status: "failed",
+                    });
+                  }
+                }}
               />
             </div>
 
-            {/* price */}
-            <TextInput
+            {/* Price */}
+            {/* <TextInput
               name="price"
-              placeholder="price@example.com"
+              placeholder="Price"
               label="Price"
-              type="price"
+              type="text"
               register={register("price", {
-                required: "price Address is required",
+                required: "Price is required",
               })}
               styles="w-full"
               error={errors.price ? errors.price.message : ""}
+            /> */}
+
+            {/* Description */}
+            <TextInput
+              name="desc"
+              label="Description"
+              placeholder="Description"
+              type="text"
+              styles="w-full"
+              register={register("desc", {
+                required: "Description is required!",
+              })}
+              error={errors.desc ? errors.desc?.message : ""}
             />
 
-            {/* desc & Confirm desc */}
-            <div className="flex flex-col lg:flex-row gap-2">
-              <TextInput
-                name="desc"
-                label="Description"
-                placeholder="desc"
-                type="desc"
-                styles="w-full"
-                register={register("desc", {
-                  required: "desc is required!",
-                })}
-                error={errors.desc ? errors.desc?.message : ""}
-              />
-             
-            </div>
+            {/* Error Message */}
             {errMsg?.message && (
               <span
                 className={`text-sm ${
-                  errMsg?.status == "failed"
+                  errMsg?.status === "failed"
                     ? "text-[#f64949fe]"
                     : "text-[#2ba150fe]"
                 } mt-0.5`}
@@ -130,6 +153,8 @@ const Register = () => {
                 {errMsg?.message}
               </span>
             )}
+
+            {/* Submit Button */}
             {isSubmitting ? (
               <Loading />
             ) : (
@@ -139,14 +164,10 @@ const Register = () => {
               />
             )}
           </form>
-
-          
         </div>
       </div>
-      {/* RIGHT - IMAGE */}
-      
     </div>
   );
 };
 
-export default Register;
+export default BookForm;

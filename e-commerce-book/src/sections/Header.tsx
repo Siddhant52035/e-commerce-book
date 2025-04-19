@@ -49,12 +49,12 @@ export default function Header() {
 
           {/* Navigation Icons */}
           <div className="flex items-center gap-6 text-sm font-medium text-black uppercase">
-            <Link href="/books" className="flex items-center gap-1 cursor-pointer">
+            <Link href="/wishlist" className="flex items-center gap-1 cursor-pointer">
               <Heart size={16} />
               <span>Wishlist</span>
             </Link>
             <div className="h-7 w-[1.5px] bg-gray-300" />
-            <Link href="/message" className="flex items-center gap-1 cursor-pointer">
+            <Link href="/#" className="flex items-center gap-1 cursor-pointer">
               <MessageSquare size={16} />
               <span>Message</span>
             </Link>

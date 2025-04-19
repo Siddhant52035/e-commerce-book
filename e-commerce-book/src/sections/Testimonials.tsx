@@ -6,7 +6,7 @@ export default function Testimonials() {
     <section className="flex_center flex-col w-full py-10 font-jakarta   gap-12 bg-[#F5FBFF]">
       <SectionHeader
         smallTitle="Client Testimonials"
-        title="Testimonials that inspire confidence"
+        
       />
       <div className="testimonials w-full flex_center container px-10 gap-8  ">
         <TestimonialCard />
