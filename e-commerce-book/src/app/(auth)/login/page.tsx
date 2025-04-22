@@ -35,13 +35,13 @@ export default function Login() {
         method: "POST",
       });
 
-      if (res?.status === "failed") {
-        setErrMsg(res?.message || "Login failed");
-      } else {
+      if (res?.user) {
         setErrMsg("");
-        const userData = res?.user;
-        loginUser(userData); // update the zustand store with user info
-        window.location.replace("/"); // redirect to home
+        loginUser(res.user);
+
+        window.location.replace("/");
+      } else {
+        setErrMsg(res?.message || "Login failed! Invalid email or password.");
       }
     } catch (error) {
       console.error(error);
@@ -63,7 +63,10 @@ export default function Login() {
             Welcome Back
           </p>
 
-          <form className="mt-6 flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="mt-6 flex flex-col gap-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <TextInput
               name="email"
               placeholder="Username"

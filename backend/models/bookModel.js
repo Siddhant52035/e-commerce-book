@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const noteSchema = new mongoose.Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "Users" },
+    userId: { type: Schema.Types.ObjectId, ref: "Users", required:true },
     name: { type: String, required: true },
     pdf: { type: String, required: true },
     desc: { type: String, required: true }, 

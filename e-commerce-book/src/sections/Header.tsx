@@ -29,10 +29,10 @@ export default function Header() {
         <nav className="w-full flex items-center justify-between p-4 bg-white">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="bg-[#1b2d43] text-white px-4 py-2 rounded-full border-2 border-blue-500 flex items-center gap-1">
+            <Link href="/" className="bg-[#1b2d43] text-white px-4 py-2 rounded-full border-2 border-blue-500 flex items-center gap-1">
               <Image src={logo} alt="Sikshya Logo" width={40} height={40} />
               <span className="text-lg font-bold">Sikshya</span>
-            </div>
+            </Link>
           </div>
 
           {/* Search Bar */}
@@ -60,10 +60,10 @@ export default function Header() {
             </Link>
             <div className="h-7 w-[1.5px] bg-gray-300" />
             {isLoggedIn ? (
-              <div className="flex items-center gap-1 cursor-pointer">
+              <Link href="/user-profile" className="flex items-center gap-1 cursor-pointer">
                 <User size={16} />
                 <span>Account</span>
-              </div>
+              </Link>
             ) : (
               <>
                 <Link

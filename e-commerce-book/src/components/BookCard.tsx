@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCartStore } from "@/store/useCartStore";
 import bookImage from "@/assets/images/book1.png";
+import { MessageCircle } from "lucide-react";
 
 const BookCard = ({ name, pdf, desc, id }: any) => {
   const formatSlug = (name: string) => name.toLowerCase().replace(/ /g, "-");
@@ -13,7 +14,6 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
 
   const handleAddToCart = () => {
     const productToAdd = { name, pdf, desc, id };
-
     const itemExists = cart.some((item) => item.id === id);
 
     if (itemExists) {
@@ -25,45 +25,47 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
   };
 
   return (
-    <div className="bg-[#cbd0dc] p-4 rounded-sm shadow-lg group">
+    <div className="bg-[#f9fafb] rounded-2xl shadow-lg p-5 transition hover:shadow-2xl group">
       <Link href={`/product/${formatSlug(name)}`}>
-        <div className="cursor-pointer flex justify-center group-hover:scale-105 transition-transform">
+        <div className="cursor-pointer flex justify-center mb-4">
           <Image
             src={bookImage}
             alt={name}
             width={200}
             height={200}
-            className="w-48 h-40 object-cover rounded-lg"
+            className="rounded-xl w-48 h-40 object-cover transform group-hover:scale-105 transition-transform duration-300"
           />
         </div>
       </Link>
 
-      <div className="mt-4 text-center">
-        <h2 className="font-medium text-lg text-black">{name}</h2>
-
-        <p className="text-sm text-black mt-2">{desc}</p>
+      <div className="text-left mb-4">
+        <h2 className="text-xl font-semibold  text-gray-800">{name}</h2>
+        <p className="text-sm text-gray-600 mt-2">{desc}</p>
       </div>
 
-      <div className="mt-4 flex justify-between items-center">
+      <div className="flex items-center justify-between mt-4">
         <button
           onClick={handleAddToCart}
-          className="text-semibold text-ascent-1 px-2 py-2 bg-secondary rounded-lg text-white transition"
+          className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition duration-300"
         >
           Save to WishList
         </button>
-        {/* <Link href={`/product/${formatSlug(name)}`} passHref>
-          <button className="text-semibold text-ascent-1 px-4 py-2 border-2 border-[#dda303] rounded-lg hover:bg-[#ef001f] hover:text-white transition">
-            Buy Now
-          </button>
-        </Link> */}
+
         <a
           href={pdf}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-semibold text-ascent-1 px-4 py-2  bg-secondary rounded-lg text-white transition"
+          className="bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 px-4 rounded-lg transition duration-300"
         >
           View PDF
         </a>
+      </div>
+
+      <div className="flex justify-end mt-4">
+        <div className="flex items-center space-x-1 text-gray-500 cursor-pointer hover:text-gray-700 transition">
+          <MessageCircle className="w-5 h-5" />
+          <span className="text-sm">Comment</span>
+        </div>
       </div>
     </div>
   );

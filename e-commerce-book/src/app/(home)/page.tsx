@@ -1,3 +1,4 @@
+"use client";
 import About from "@/sections/About";
 import Hero from "@/sections/Hero";
 import Image from "next/image";
@@ -6,8 +7,21 @@ import Head from "next/head";
 import contactImage from "@/assets/images/about1.png";
 import contactImage2 from "@/assets/images/about2.png";
 import Notes from "@/sections/Notes";
+import useUserStore from "@/store/useUserStore";
+import { useEffect } from "react";
+
 
 export default function Home() {
+
+  const loggedIn = useUserStore((state) => state.loggedIn);
+
+  useEffect(() => {
+    if (!loggedIn) {
+      window.location.replace("/login");
+
+    }
+  }, [loggedIn])
+
   return (
     <>
       <Head>

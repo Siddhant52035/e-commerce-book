@@ -7,14 +7,18 @@ import TextInput from "@/components/UI/TextInput";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import Loading from "@/components/UI/Loading";
 import { handleFileUpload } from "@/utils/index"; // make sure this is the updated one for PDF
+import useUserStore from "@/store/useUserStore";
 
 interface BookData {
+  userId:string;
   name: string;
   pdf: string; // will store the uploaded PDF URL
   desc: string;
 }
 
 const BookForm = () => {
+  const user = useUserStore((state) => state.user);
+
   const [errMsg, setErrMsg] = useState<{
     message: string;
     status: string;
@@ -32,41 +36,46 @@ const BookForm = () => {
   const onSubmit = async (data: BookData) => {
     setIsSubmitting(true);
     try {
+      if (!user?.id) {
+        setErrMsg({ message: "User not found. Please log in.", status: "failed" });
+        setIsSubmitting(false);
+        return;
+      }
+  
       if (!pdfFile) {
         setErrMsg({ message: "Please upload a PDF file.", status: "failed" });
         setIsSubmitting(false);
         return;
       }
-
+  
       const uploadedUrl = await handleFileUpload(pdfFile);
-
+  
       if (!uploadedUrl) {
         setErrMsg({ message: "PDF upload failed.", status: "failed" });
         setIsSubmitting(false);
         return;
       }
-
+  
       const payload = {
         ...data,
-        pdf: uploadedUrl, // now contains the PDF URL
+        pdf: uploadedUrl,
+        userId: user.id,
       };
-
+  
       const res = await apiRequest({
         url: "/note/upload-pdf",
         data: payload,
         method: "POST",
       });
-
+  
       setErrMsg(res);
-
-      
-
       setIsSubmitting(false);
     } catch (error) {
       console.log(error);
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="flex h-screen w-full">
