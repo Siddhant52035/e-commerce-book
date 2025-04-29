@@ -48,10 +48,11 @@ export default function Blogs() {
             {books.slice(0,3).map((book) => {
               return (
                 <BookCard
-                  id={book.id}
+                  key={book._id}
+                  name={book.name}
                   pdf={book.pdf}
                   desc={book.desc}
-                  name={book.name}
+                  _id={book._id}
                 />
               );
             })}

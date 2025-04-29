@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import BookCard from "@/components/BookCard";
+import SectionHeader from "@/components/SectionHeader";
+import NewBookCard from "@/components/NewBookCard";
 
 // Book interface
-interface BookData {
+interface NoteData {
   title: string;
   author?: string;
   description?: string;
@@ -15,45 +17,34 @@ interface BookData {
   [key: string]: any;
 }
 
+interface BookData {
+  title: string;
+  author?: string;
+  description?: string;
+  image: string; // URL to PDF
+  [key: string]: any;
+}
+
 // Sample categories
 const categories = [
   {
-    label: "Notes",
+    label: "Share Books",
     path: "/notes",
-    subMenu: [
-      { label: "Science Notes", path: "/notes/science" },
-      { label: "Math Notes", path: "/notes/math" },
-      { label: "History Notes", path: "/notes/history" },
-    ],
   },
   {
-    label: "Books",
+    label: "Read Books",
     path: "/books",
-    subMenu: [
-      { label: "Fiction", path: "/books/fiction" },
-      { label: "Non-fiction", path: "/books/non-fiction" },
-      { label: "Biographies", path: "/books/biographies" },
-      { label: "Academic", path: "/books/academic" },
-      { label: "Self-help", path: "/books/self-help" },
-    ],
   },
   {
-    label: "Others",
+    label: "Study Notes",
     path: "/others",
-    subMenu: [
-      { label: "Magazines", path: "/others/magazines" },
-      { label: "Journals", path: "/others/journals" },
-    ],
-  },
-  {
-    label: "Library Info",
-    path: "/library-info",
   },
 ];
 
 export default function Product() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
-  const [books, setBooks] = useState<BookData[]>([]);
+  const [notes, setNotes] = useState<NoteData[]>([]);
+  const [books, setBooks] = useState<NoteData[]>([]);
   const [loading, setLoading] = useState(true);
 
   const toggleSubMenu = (category: string) => {
@@ -65,9 +56,22 @@ export default function Product() {
       const response = await axios.get(
         "http://localhost:8800/note/fetch-notes"
       );
+      setNotes(response.data);
+    } catch (error) {
+      console.error("Failed to fetch Notes", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchNotes = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8800/note/fetch-books"
+      );
       setBooks(response.data);
     } catch (error) {
-      console.error("Failed to fetch books", error);
+      console.error("Failed to fetch Books", error);
     } finally {
       setLoading(false);
     }
@@ -75,7 +79,7 @@ export default function Product() {
 
   useEffect(() => {
     fetchBooks();
-    
+    fetchNotes();
   }, []);
 
   return (
@@ -104,25 +108,7 @@ export default function Product() {
                       <Link href={item.path} className="font-semibold">
                         {item.label}
                       </Link>
-                      {item.subMenu &&
-                        (openCategory === item.label ? (
-                          <ChevronDown size={18} />
-                        ) : (
-                          <ChevronRight size={18} />
-                        ))}
                     </div>
-                    {openCategory === item.label && item.subMenu && (
-                      <ul className="pl-6 transition-all list-disc duration-300">
-                        {item.subMenu.map((sub, subIndex) => (
-                          <li
-                            key={subIndex}
-                            className="p-1 text-black font-semibold hover:text-white hover:bg-[#ef001f] rounded-sm"
-                          >
-                            <Link href={sub.path}>{sub.label}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
                   </li>
                 ))}
               </ul>
@@ -131,14 +117,31 @@ export default function Product() {
 
           {/* Book Display */}
           <div className="w-full md:w-3/4 mb-10 h-full">
+            <SectionHeader smallTitle="Read Books / Notes" className="mb-4" />
+            {loading ? (
+              <p className="text-center">Loading books...</p>
+            ) : (
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                {notes.map((book) => (
+                  <BookCard
+                    key={book._id}
+                    name={book.name}
+                    pdf={book.pdf}
+                    desc={book.desc}
+                    _id={book._id}
+                  />
+                ))}
+              </div>
+            )}
+            <SectionHeader smallTitle="Share Books" className="my-4" />
             {loading ? (
               <p className="text-center">Loading books...</p>
             ) : (
               <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {books.map((book) => (
-                  <BookCard
+                  <NewBookCard
                     name={book.name}
-                    pdf={book.pdf}
+                    image={book.image}
                     desc={book.desc}
                     id={book.id}
                   />

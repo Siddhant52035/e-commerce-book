@@ -39,7 +39,7 @@ export const handleFileUpload = async (uploadFile: File): Promise<string | null>
 
   try {
     const response = await axios.post<{ secure_url: string }>(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_ID}/raw/upload/`,
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_ID}/auto/upload/`,
       formData
     );
     return response.data.secure_url;
@@ -48,4 +48,29 @@ export const handleFileUpload = async (uploadFile: File): Promise<string | null>
     return null;
   }
 };
+
+
+
+export const handleImageUpload = async (uploadFile: File): Promise<string | null> => {
+  if (!uploadFile || !uploadFile.type.startsWith('image/')) {
+    console.log('Only image files are allowed.');
+    return null;
+  }
+
+  const formData = new FormData();
+  formData.append('file', uploadFile);
+  formData.append('upload_preset', 'bookstore'); // Replace with your actual upload preset
+
+  try {
+    const response = await axios.post<{ secure_url: string }>(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_ID}/image/upload`,
+      formData
+    );
+    return response.data.secure_url;
+  } catch (error: any) {
+    console.error('Error uploading image:', error?.response?.data || error.message);
+    return null;
+  }
+};
+
 

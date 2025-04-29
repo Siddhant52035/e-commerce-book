@@ -60,24 +60,7 @@ export default function Footer() {
             academic notes. Whether you're a student looking for study material
             or someone who loves helping others learn, Siksha is for you.
           </p>
-          <div className="flex flex-col text-dimmer gap-3">
-            {/* <div className="flex items-center gap-2 text-sm">
-              <FaPhoneAlt /> <p>+61452446582</p>
-            </div> */}
-
-            <div className="flex items-center gap-2 text-sm">
-              <FaLocationDot /> <p>Kandelco Pty. Ltd. Melbourne, Australia</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <FaEnvelope /> <p>info@kandelco.com.au</p>
-            </div>
-            <Link
-              href="http://www.kandelco.com.au"
-              className="flex items-center gap-2 text-sm"
-            >
-              <TbWorld /> <span>www.kandelco.com.au</span>
-            </Link>
-          </div>
+          
           <div className="flex items-center gap-3">
             {socialMedia.map((media, index) => (
               <a
@@ -112,9 +95,7 @@ export default function Footer() {
                 <Link href="/contact" className="hover:underline">
                   Contact Us
                 </Link>
-                <Link href="/blogs" className="hover:underline">
-                  Blog
-                </Link>
+               
               </nav>
             </div>
             <div className="flex flex-col gap-6 w-[48%]">
@@ -123,10 +104,8 @@ export default function Footer() {
                 <Link href="/privacy-policy" className="hover:underline">
                   Privacy Policy
                 </Link>
-                <Link href="/community-consulting" className="hover:underline">
-                  FAQs
-                </Link>
-                <Link href="/career-consulting" className="hover:underline">
+               
+                <Link href="/" className="hover:underline">
                   Terms of Services
                 </Link>
               </nav>
@@ -136,10 +115,10 @@ export default function Footer() {
             <p className="text-xs md:text-base font-normal">
               Subscribe to Our Newsletter
             </p>
-            <p className="text-sm text-dimmer">
+            {/* <p className="text-sm text-dimmer">
               We use our years, international expertise, and endurance to help
               our students in a hassle-free setting.
-            </p>
+            </p> */}
             <form className="flex flex-col gap-4 ">
               <input
                 type="email"

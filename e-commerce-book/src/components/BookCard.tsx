@@ -1,20 +1,29 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useCartStore } from "@/store/useCartStore";
-import bookImage from "@/assets/images/book1.png";
 import { MessageCircle } from "lucide-react";
+import { useCartStore } from "@/store/useCartStore";
+import useUserStore from "@/store/useUserStore";
+import bookImage from "@/assets/images/book1.png";
+import { apiRequest } from "@/utils/index"; // Import your apiRequest function
 
-const BookCard = ({ name, pdf, desc, id }: any) => {
-  const formatSlug = (name: string) => name.toLowerCase().replace(/ /g, "-");
-
+const BookCard = ({ name, pdf, desc, _id }: {name:string; pdf:string; desc:string; _id:string;}) => {
+  const user = useUserStore((state) => state.user);
   const { items: cart, addToCart } = useCartStore();
 
+  const formatSlug = (name: string | undefined) =>
+    (name ?? "").toLowerCase().replace(/ /g, "-");
+
+  const [comments, setComments] = useState<any[]>([]);
+  const [newComment, setNewComment] = useState("");
+  const [showAll, setShowAll] = useState(false);
+
   const handleAddToCart = () => {
-    const productToAdd = { name, pdf, desc, id };
-    const itemExists = cart.some((item) => item.id === id);
+    const productToAdd = { name, pdf, desc, id: _id };
+    const itemExists = cart.some((item) => item.id === _id);
 
     if (itemExists) {
       toast.info("Note already exists!!");
@@ -23,6 +32,64 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
       toast.success("Note saved to WishList");
     }
   };
+
+  const fetchComments = async () => {
+    try {
+      const response = await apiRequest({
+        url: `/comment/get-comments?bookId=${_id}`,
+        method: "GET",
+        data: {},
+      });
+
+      if (response?.success) {
+        setComments(response.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch comments", error);
+    }
+  };
+
+  const submitComment = async () => {
+    if (!newComment.trim()) return;
+
+    if (!user || !user.id) {
+      toast.error("Please log in to comment");
+      return;
+    }
+
+    console.log("Submitting comment with data:", {
+      comment: newComment,
+      userId: user.id,
+      noteId: _id
+    });
+
+    try {
+      const response = await apiRequest({
+        url: `/comment/commentBook`,
+        method: "POST",
+        data: {
+          comment: newComment,
+          userId: user.id,
+          noteId: _id,
+        },
+      });
+
+      console.log("Response from server:", response);
+
+      if (response?.success) {
+        toast.success("Comment posted!");
+        setNewComment(""); // Clear the comment box
+        fetchComments(); // Reload comments
+      }
+    } catch (error) {
+      console.error("Failed to submit comment", error);
+      console.log("This is the id", _id)
+    }
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [_id]);
 
   return (
     <div className="bg-[#f9fafb] rounded-2xl shadow-lg p-5 transition hover:shadow-2xl group">
@@ -39,7 +106,7 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
       </Link>
 
       <div className="text-left mb-4">
-        <h2 className="text-xl font-semibold  text-gray-800">{name}</h2>
+        <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
         <p className="text-sm text-gray-600 mt-2">{desc}</p>
       </div>
 
@@ -61,11 +128,51 @@ const BookCard = ({ name, pdf, desc, id }: any) => {
         </a>
       </div>
 
-      <div className="flex justify-end mt-4">
-        <div className="flex items-center space-x-1 text-gray-500 cursor-pointer hover:text-gray-700 transition">
+      {/* COMMENT SECTION */}
+      <div className="mt-6">
+        <div className="flex items-center space-x-1 text-gray-500 mb-2">
           <MessageCircle className="w-5 h-5" />
-          <span className="text-sm">Comment</span>
+          <span className="text-sm font-semibold">Comments</span>
         </div>
+
+        {/* Add Comment */}
+        <div className="flex gap-2 mb-4">
+          <input
+            type="text"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Write a comment..."
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
+          />
+          <button
+            onClick={submitComment}
+            className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg"
+          >
+            Submit
+          </button>
+        </div>
+
+        {/* Show Comments */}
+        <div className="space-y-3 max-h-40 overflow-y-auto">
+          {(showAll ? comments : comments.slice(0, 2)).map((com) => (
+            <div key={com._id} className="bg-white rounded-md p-2 shadow-sm">
+              <p className="text-sm font-medium text-gray-800">
+                {com.userId?.firstName ?? "Unknown"}{" "}
+                {com.userId?.lastName ?? ""}
+              </p>
+              <p className="text-sm text-gray-600">{com.comment}</p>
+            </div>
+          ))}
+        </div>
+
+        {comments.length > 2 && (
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="text-blue-500 text-xs mt-2 hover:underline"
+          >
+            {showAll ? "Show Less" : "View All Comments"}
+          </button>
+        )}
       </div>
     </div>
   );
