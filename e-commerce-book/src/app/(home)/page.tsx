@@ -10,25 +10,22 @@ import Notes from "@/sections/Notes";
 import useUserStore from "@/store/useUserStore";
 import { useEffect } from "react";
 
-
 export default function Home() {
-
   const loggedIn = useUserStore((state) => state.loggedIn);
 
   useEffect(() => {
     if (!loggedIn) {
       window.location.replace("/login");
-
     }
-  }, [loggedIn])
+  }, [loggedIn]);
 
   return (
     <>
       <Head>
-        <title>Sikshya</title>
+        <title>Lumbini Agro</title>
         <meta
           name="description"
-          content="Sikshya Consulting delivers results-driven strategies across business, community, and professional development."
+          content="Lumbini Agro Consulting delivers results-driven strategies across business, community, and professional development."
         />
         <meta
           name="keywords"
@@ -58,7 +55,7 @@ export default function Home() {
                     ABOUT US
                   </h1>
                   <h4>
-                    Welcome to SIKSHYA, a platform built by students, for
+                    Welcome to Lumbini Agro, a platform built by students, for
                     students! We’re here to make studying simpler, smarter, and
                     more collaborative. Our mission is to empower every learner
                     by creating a space where knowledge is shared freely and
@@ -68,8 +65,8 @@ export default function Home() {
                     covered.
                   </h4>
                   <h4>
-                    At SIKSHYA, we believe that education thrives when we help
-                    each other. That’s why we’ve created a community-driven
+                    At Lumbini Agro, we believe that education thrives when we
+                    help each other. That’s why we’ve created a community-driven
                     system where you can upload your notes, old question papers,
                     and study materials to support your peers in need. In
                     return, you’ll get access to a treasure trove of
@@ -102,12 +99,12 @@ export default function Home() {
                     WHAT WE DO
                   </h1>
                   <h4>
-                    At SIKSHYA, we’re all about making studying easier and more
-                    rewarding for students like you. Our platform is designed to
-                    bring the power of sharing and learning into one simple,
-                    student-friendly space. Here’s how it works: Upload your
-                    notes, old question papers, or any study material you’ve
-                    got—it could be a game-changer for a peer in need. In
+                    At Lumbini Agro, we’re all about making studying easier and
+                    more rewarding for students like you. Our platform is
+                    designed to bring the power of sharing and learning into one
+                    simple, student-friendly space. Here’s how it works: Upload
+                    your notes, old question papers, or any study material
+                    you’ve got—it could be a game-changer for a peer in need. In
                     return, dive into a growing library of resources shared by
                     other students, from handwritten notes to textbooks, all
                     available to read online whenever you want.

@@ -6,7 +6,7 @@ import {
   FaPhoneAlt,
   FaPinterest,
 } from "react-icons/fa";
-import logo from "@/assets/logo/Sikshya.png";
+import logo from "@/assets/logo/logo.jpg";
 import { FaLocationDot } from "react-icons/fa6";
 import c1 from "@/assets/logo/colleges-uni.jpg";
 import c2 from "@/assets/logo/colleges-uni2.jpg";
@@ -56,7 +56,7 @@ export default function Footer() {
           {/* <p className="text-xs md:text-base font-normal">About</p> */}
 
           <p className="text-sm font-normal text-dimmer">
-            Siksha is a community-driven platform for sharing and accessing
+            Lumbini Agro is a community-driven platform for sharing and accessing
             academic notes. Whether you're a student looking for study material
             or someone who loves helping others learn, Siksha is for you.
           </p>

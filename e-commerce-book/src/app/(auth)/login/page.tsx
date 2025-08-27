@@ -5,7 +5,7 @@ import TextInput from "@/components/UI/TextInput";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import Loading from "@/components/UI/Loading";
 import Link from "next/link";
-import login from "@/assets/images/Login.png";
+import login from "@/assets/images/signup.jpg";
 import { apiRequest } from "@/utils";
 import useUserStore from "@/store/useUserStore";
 
@@ -55,11 +55,11 @@ export default function Login() {
     <div className="flex h-screen w-full">
       {/* LEFT SIDE */}
       <div className="w-full lg:w-[55%] flex items-center justify-center bg-[#0c2d48] px-6">
-        <div className="w-full max-w-md bg-[#cbd0dc] p-8 rounded-sm shadow-md">
-          <h2 className="text-3xl font-extrabold text-center text-black">
+        <div className="w-full max-w-md bg-secondary p-8 rounded-sm shadow-md">
+          <h2 className="text-3xl font-extrabold text-center text-white">
             LOGIN
           </h2>
-          <p className="text-center text-lg font-medium text-gray-700 mt-1">
+          <p className="text-center text-lg font-medium text-white mt-1">
             Welcome Back
           </p>
 
@@ -106,7 +106,7 @@ export default function Login() {
           </form>
 
           <div className="flex justify-center items-center mt-4">
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-white">
               New here?{" "}
               <Link href="/signup" className="text-blue-600 font-semibold">
                 Create Account

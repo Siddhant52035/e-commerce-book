@@ -1,4 +1,4 @@
-import contactImage from "@/assets/images/signup.png";
+import contactImage from "@/assets/images/signup.jpg";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import { Link as LinkIcon } from "lucide-react";

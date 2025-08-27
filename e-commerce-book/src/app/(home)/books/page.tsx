@@ -28,16 +28,12 @@ interface BookData {
 // Sample categories
 const categories = [
   {
-    label: "Share Books",
+    label: "Borrow Books",
     path: "/notes",
   },
   {
     label: "Read Books",
     path: "/books",
-  },
-  {
-    label: "Study Notes",
-    path: "/others",
   },
 ];
 
@@ -133,7 +129,7 @@ export default function Product() {
                 ))}
               </div>
             )}
-            <SectionHeader smallTitle="Share Books" className="my-4" />
+            <SectionHeader smallTitle="Borrow Books" className="my-4" />
             {loading ? (
               <p className="text-center">Loading books...</p>
             ) : (

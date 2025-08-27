@@ -7,7 +7,7 @@ import Link from "next/link";
 import TextInput from "@/components/UI/TextInput";
 import PrimaryButton from "@/components/UI/PrimaryButton";
 import Loading from "@/components/UI/Loading";
-import signup from "@/assets/images/signup.png";
+import signup from "@/assets/images/signup.jpg";
 
 interface FormData {
   firstName: string;
@@ -56,11 +56,11 @@ const Register = () => {
     <div className="flex h-screen w-full ">
       {/* LEFT - FORM */}
       <div className="w-full lg:w-[55%] flex items-center justify-center bg-[#0c2d48] px-6">
-        <div className="w-full max-w-lg bg-[#cbd0dc] p-8 rounded-sm shadow-md">
-          <h2 className="text-3xl font-extrabold text-center text-black">
+        <div className="w-full max-w-lg bg-secondary p-8 rounded-sm shadow-md">
+          <h2 className="text-3xl font-extrabold text-center text-white">
             SIGN UP
           </h2>
-          <p className="text-center text-base font-medium text-gray-700 mb-6">
+          <p className="text-center text-base font-medium text-white mb-6">
             Get Started Now
           </p>
 
@@ -156,7 +156,7 @@ const Register = () => {
             )}
           </form>
 
-          <p className="text-gray-600 text-sm text-center mt-6">
+          <p className="text-white text-sm text-center mt-6">
             Already have an account?{" "}
             <Link
               href="/login"

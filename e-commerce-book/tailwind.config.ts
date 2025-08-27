@@ -33,7 +33,7 @@ const config: Config = {
           DEFAULT: "#ffffff",
        
         },
-        secondary: "#173f5f",
+        secondary: "#00cc00",
         tertiary: '#2d2d2d',
         quaternary: '#FFBF1C',
 

@@ -4,7 +4,6 @@ import contactImage3 from "@/assets/images/about3.png";
 import contactImage4 from "@/assets/images/about-final.png";
 import Image from "next/image";
 
-
 export default function About() {
   return (
     <>
@@ -27,24 +26,31 @@ export default function About() {
                   ABOUT US
                 </h1>
                 <h4>
-                  Welcome to SIKSHYA, a platform built by students, for
-                  students! We’re here to make studying simpler, smarter, and
-                  more collaborative. Our mission is to empower every learner by
-                  creating a space where knowledge is shared freely and
-                  effortlessly. Whether you’re a student looking to upload your
-                  notes, access study materials, or grab some offline books as a
-                  reward for your contributions, we’ve got you covered.
+                  Lumbini Agro-Environment Lab Pvt. Ltd., established in 2019
+                  and located in Sunwal-12, Bhumahi, Nawalparasi, Lumbini
+                  Province, Nepal, is a leading environmental consultancy
+                  dedicated to sustainable practices in Nepal. The lab brings
+                  together a skilled team of environmentalists, geologists,
+                  socio-economists, and civil engineers to provide innovative
+                  and scientific solutions for environmental conservation. Their
+                  expertise includes detailed environmental impact assessments,
+                  pollution control measures, and holistic waste management
+                  strategies designed to promote sustainability and protect the
+                  environment.
                 </h4>
                 <h4>
-                  At SIKSHYA, we believe that education thrives when we help
-                  each other. That’s why we’ve created a community-driven system
-                  where you can upload your notes, old question papers, and
-                  study materials to support your peers in need. In return,
-                  you’ll get access to a treasure trove of resources—read books
-                  and papers online, or even score offline books as a token of
-                  appreciation for your generosity. From textbooks to
-                  handwritten notes, we’re building a hub where every student
-                  can find what they need and give back in their own way.
+                  Since its inception, Lumbini Agro-Environment Lab has been at
+                  the forefront of delivering superior environmental services,
+                  playing a crucial role in improving soil quality, reducing
+                  pollution levels, and ensuring the safety of drinking water.
+                  The lab’s client-centric approach prioritizes customized
+                  solutions tailored to meet specific environmental goals,
+                  contributing significantly to a greener and healthier
+                  community. Their commitment to excellence and innovation has
+                  earned them the trust of local governments, businesses, and
+                  communities across the region. Collaborating with Nepal’s
+                  leading experts in environmental conservation, the lab aims to
+                  make a positive and lasting impact on the environment.
                 </h4>
                 <h4>
                   Our journey started with a simple idea: no student should
@@ -69,9 +75,9 @@ export default function About() {
                   WHAT WE DO
                 </h1>
                 <h4>
-                  At SIKSHYA, we’re all about making studying easier and more
-                  rewarding for students like you. Our platform is designed to
-                  bring the power of sharing and learning into one simple,
+                  At Lumbini Agro, we’re all about making studying easier and
+                  more rewarding for students like you. Our platform is designed
+                  to bring the power of sharing and learning into one simple,
                   student-friendly space. Here’s how it works: Upload your
                   notes, old question papers, or any study material you’ve
                   got—it could be a game-changer for a peer in need. In return,
@@ -116,16 +122,17 @@ export default function About() {
                   WHY WE STARTED
                 </h1>
                 <h4>
-                  At Sikshya, we know the student struggle all too well—missing
-                  notes right before an exam, scrambling for updated resources,
-                  or realizing the textbook you need is nowhere to be found. As
-                  students ourselves, we’ve lived those frustrations firsthand.
-                  That’s what sparked the idea for Sikshya: a platform to turn
-                  those challenges into a solution. We wanted to create a space
-                  where every student could find what they need and share what
-                  they have, making education less stressful and more connected.
-                  Sikshya isn’t just a website—it’s our way of saying, “We’ve
-                  got your back.”
+                  At Lumbini Agro, we know the student struggle all too
+                  well—missing notes right before an exam, scrambling for
+                  updated resources, or realizing the textbook you need is
+                  nowhere to be found. As students ourselves, we’ve lived those
+                  frustrations firsthand. That’s what sparked the idea for
+                  Lumbini Agro: a platform to turn those challenges into a
+                  solution. We wanted to create a space where every student
+                  could find what they need and share what they have, making
+                  education less stressful and more connected. Lumbini Agro
+                  isn’t just a website—it’s our way of saying, “We’ve got your
+                  back.”
                 </h4>
               </div>
             </div>

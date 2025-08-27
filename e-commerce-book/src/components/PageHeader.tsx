@@ -9,7 +9,7 @@ export default function PageHeader({ title }: { title: string }) {
     <div
       style={{
         background:
-          "linear-gradient(135deg, #173f5f 0%, #2b5876 40%, #1c1c1c 100%)",
+          "linear-gradient(135deg, #00cc00 0%, #2b5876 40%, #008000 100%)",
       }}
       className="w-full h-64 flex_center flex-col text-primary relative"
     >
